@@ -22,8 +22,8 @@ public class EventosService {
     @Autowired
     private UserRepository userRepository;
 
-    @PostMapping
-    public void createEvent(@RequestBody EventoDTO eventoDTO, @AuthenticationPrincipal User user) {
+
+    public void createEvent(EventoDTO eventoDTO, @AuthenticationPrincipal User user) {
         Eventos newEvento = new Eventos();
         newEvento.setName(eventoDTO.name());
         newEvento.setEmail(eventoDTO.email());
