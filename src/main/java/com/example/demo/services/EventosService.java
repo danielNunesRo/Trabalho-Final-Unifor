@@ -13,6 +13,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.io.IOException;
+
 @Service
 public class EventosService {
 
@@ -23,7 +25,7 @@ public class EventosService {
     private UserRepository userRepository;
 
 
-    public void createEvent(EventoDTO eventoDTO, @AuthenticationPrincipal User user) {
+    public void createEvent(EventoDTO eventoDTO, @AuthenticationPrincipal User user) throws IOException {
         Eventos newEvento = new Eventos();
         newEvento.setName(eventoDTO.name());
         newEvento.setEmail(eventoDTO.email());
@@ -31,9 +33,11 @@ public class EventosService {
         newEvento.setDayEvento(eventoDTO.dayEvento());
         newEvento.setHoursEvento(eventoDTO.hoursEvento());
         newEvento.setBuyTickets(eventoDTO.buyTickets());
-        newEvento.setImage(eventoDTO.image());
         newEvento.setUser(user);
+
+
         eventosRepository.save(newEvento);
     }
+
 
 }

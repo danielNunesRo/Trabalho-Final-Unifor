@@ -6,7 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Entity
 @Table(name = "tb_eventos")
@@ -26,13 +28,11 @@ public class Eventos {
     @Column(nullable = false)
     private String url;
     @Column(nullable = false)
-    private LocalDateTime dayEvento;
+    private LocalDate dayEvento;
     @Column(nullable = false)
-    private LocalDateTime hoursEvento;
-    @Column(nullable = false)
+    private LocalTime hoursEvento;
     private String buyTickets;
-    @Column(nullable = false)
-    private byte[] image;
+    private boolean status;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
