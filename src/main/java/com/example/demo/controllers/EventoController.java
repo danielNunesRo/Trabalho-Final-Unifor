@@ -1,5 +1,6 @@
 package com.example.demo.controllers;
 
+import com.example.demo.domain.Eventos;
 import com.example.demo.domain.User;
 import com.example.demo.domain.dtos.EventoDTO;
 import com.example.demo.services.EventosService;
@@ -15,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.List;
 
 @RestController
 @RequestMapping("/eventos")
@@ -31,6 +33,17 @@ public class EventoController {
         } catch (Exception e) {
             return ResponseEntity.status(500).body("Erro ao criar evento");
         }
+    }
+
+    @PutMapping("/validarevento/{id}")
+    public ResponseEntity<?> updateStatusEvent(@PathVariable Long id) {
+        eventoService.updateStatusEvent(id);
+        return ResponseEntity.ok().body("Eventos adicionado a lista");
+    }
+
+    @GetMapping("/disponibles")
+    public ResponseEntity<List<Eventos>> eventosTrue() {
+        return ResponseEntity.ok().body(eventoService.eventosTrue());
     }
 
     @GetMapping

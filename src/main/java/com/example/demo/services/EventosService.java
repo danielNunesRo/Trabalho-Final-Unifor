@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.io.IOException;
+import java.util.List;
 
 @Service
 public class EventosService {
@@ -37,6 +38,15 @@ public class EventosService {
 
 
         eventosRepository.save(newEvento);
+    }
+
+    public void updateStatusEvent(Long id) {
+        eventosRepository.updateStatusToTrueById(id);
+    }
+
+    public List<Eventos> eventosTrue() {
+        List<Eventos> list = eventosRepository.findByStatusTrue();
+        return list;
     }
 
 
