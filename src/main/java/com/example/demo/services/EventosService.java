@@ -5,13 +5,9 @@ import com.example.demo.domain.User;
 import com.example.demo.domain.dtos.EventoDTO;
 import com.example.demo.repositories.EventosRepository;
 import com.example.demo.repositories.UserRepository;
-import jdk.jfr.Event;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.io.IOException;
 import java.util.List;
@@ -47,6 +43,21 @@ public class EventosService {
     public List<Eventos> eventosTrue() {
         List<Eventos> list = eventosRepository.findByStatusTrue();
         return list;
+    }
+
+    public List<Eventos> allEvents() {
+        List<Eventos> list = eventosRepository.findAll();
+        return list;
+    }
+
+    public void deleteEvent(Long id) {
+       var eventoExisting = eventosRepository.findById(id).orElseThrow(() -> new RuntimeException(("Não há eventos com esse id")));
+        eventosRepository.deleteById(id);
+    }
+
+    public void eventRemoved(Long id) {
+        var eventoExisting = eventosRepository.findById(id).orElseThrow(() -> new RuntimeException(("Não há eventos com esse id")));
+        eventosRepository.updateStatusToFalseById(id);
     }
 
 

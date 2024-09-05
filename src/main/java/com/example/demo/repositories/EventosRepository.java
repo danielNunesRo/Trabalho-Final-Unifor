@@ -16,6 +16,11 @@ public interface EventosRepository extends JpaRepository<Eventos, Long> {
     @Query("UPDATE Eventos e SET e.status = true WHERE e.id = :id")
     void updateStatusToTrueById(@Param("id") Long id);
 
+    @Modifying
+    @Transactional
+    @Query("UPDATE Eventos e SET e.status = false WHERE e.id = :id")
+    void updateStatusToFalseById(@Param("id") Long id);
+
     List<Eventos> findByStatusTrue();
 
 }

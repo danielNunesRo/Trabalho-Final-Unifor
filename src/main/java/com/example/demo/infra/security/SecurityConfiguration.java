@@ -29,6 +29,9 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/eventos/disponibles").permitAll()
+                        .requestMatchers(HttpMethod.PUT, "/eventos/validarevento/{id}").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/eventos/allevents").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)

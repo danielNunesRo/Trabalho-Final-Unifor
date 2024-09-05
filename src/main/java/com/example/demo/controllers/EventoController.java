@@ -46,10 +46,20 @@ public class EventoController {
         return ResponseEntity.ok().body(eventoService.eventosTrue());
     }
 
-    @GetMapping
+    @GetMapping("/allevents")
     public ResponseEntity<?> findAll() {
-        return ResponseEntity.ok().body("fUNCIONANDO!");
+        return ResponseEntity.ok().body(eventoService.allEvents());
     }
 
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> deleteById(@PathVariable Long id) {
+        eventoService.deleteEvent(id);
+        return ResponseEntity.ok().body("Evento deletado com sucesso!");
+    }
 
+    @PutMapping("disponibles/remove/{id}")
+    public ResponseEntity<?> eventRemoved(@PathVariable Long id) {
+        eventoService.eventRemoved(id);
+        return ResponseEntity.ok().body("Evento removido da lista de disponiveis");
+    }
 }
