@@ -18,10 +18,10 @@ import java.io.IOException;
 @Component
 public class SecurityFilter extends OncePerRequestFilter {
 
-    @Autowired
+
     TokenService tokenService;
-    @Autowired
     UserRepository userRepository;
+
     @Autowired
     public SecurityFilter(TokenService tokenService, UserRepository userRepository) {
         this.tokenService = tokenService;
