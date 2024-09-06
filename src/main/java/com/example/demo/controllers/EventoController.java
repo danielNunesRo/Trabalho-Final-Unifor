@@ -24,6 +24,13 @@ public class EventoController {
 
     @Autowired
     private EventosService eventoService;
+    @Autowired
+    public EventoController(EventosService eventoService) {
+        this.eventoService = eventoService;
+    }
+
+    @Autowired
+
 
     @PostMapping(value = "/addevento")
     public ResponseEntity<?> createEvent(@RequestBody EventoDTO eventoDTO, @AuthenticationPrincipal User user) {

@@ -26,6 +26,15 @@ public class AuthenticationController {
     private UserRepository repository;
     @Autowired
     private TokenService tokenService;
+    @Autowired
+    public AuthenticationController(AuthenticationManager authenticationManager, UserRepository repository, TokenService tokenService) {
+        this.authenticationManager = authenticationManager;
+        this.repository = repository;
+        this.tokenService = tokenService;
+    }
+
+    @Autowired
+
 
 
     @PostMapping("/login")

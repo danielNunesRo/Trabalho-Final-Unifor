@@ -17,10 +17,13 @@ public class EventosService {
 
     @Autowired
     private EventosRepository eventosRepository;
-
     @Autowired
     private UserRepository userRepository;
-
+    @Autowired
+    public EventosService(EventosRepository eventosRepository, UserRepository userRepository) {
+        this.eventosRepository = eventosRepository;
+        this.userRepository = userRepository;
+    }
 
     public void createEvent(EventoDTO eventoDTO, @AuthenticationPrincipal User user) throws IOException {
         Eventos newEvento = new Eventos();

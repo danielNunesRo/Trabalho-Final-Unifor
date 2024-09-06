@@ -20,6 +20,13 @@ public class SecurityConfiguration {
 
     @Autowired
     SecurityFilter securityFilter;
+    @Autowired
+    public SecurityConfiguration(SecurityFilter securityFilter) {
+        this.securityFilter = securityFilter;
+    }
+
+    @Autowired
+
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
