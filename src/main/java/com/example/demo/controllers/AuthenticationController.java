@@ -1,15 +1,12 @@
 package com.example.demo.controllers;
 
-import com.example.demo.domain.InvalidToken;
 import com.example.demo.domain.User;
 import com.example.demo.domain.dtos.AuthenticationDTO;
 import com.example.demo.domain.dtos.LoginResponseDTO;
 import com.example.demo.domain.dtos.RegisterDTO;
 import com.example.demo.infra.security.TokenService;
-import com.example.demo.repositories.InvalidTokenRepository;
 import com.example.demo.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -33,7 +30,7 @@ public class AuthenticationController {
         this.tokenService = tokenService;
     }
 
-    @Autowired
+
 
 
 
